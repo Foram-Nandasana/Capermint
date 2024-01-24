@@ -39,15 +39,16 @@ const Navbar = ({ children }) => {
             icon: <FaLock />
         }
     ]
+
     return (
         <div className="container">
-            <div style={{ width: isOpen ? "250px" : "50px" }} className="sidebar">
+            <div style={{ width: isOpen ? "300px" : "90px" }} className="sidebar">
                 <div className="top_section">
-                <div style={{ marginLeft: isOpen ? "4px" : "-5px" }} className="bars">
-                         <img src="image/Capermint.png" alt="Logo" width={35} onClick={toggle}  />
+                    <div style={{ marginLeft: isOpen ? "4px" : "-5px" }} className="bars">
+                        <img src="image/Capermint.png" alt="Logo" width={50} onClick={toggle} />
                     </div>
                     <h1 style={{ display: isOpen ? "block" : "none" }} className="logo">Capermint</h1>
-                    
+
                 </div>
                 {
                     menuItem.map((item, index) => (
@@ -56,6 +57,7 @@ const Navbar = ({ children }) => {
                             <div style={{ display: isOpen ? "block" : "none" }} className="link_text">{item.name}</div>
                         </NavLink>
                     ))
+
                 }
             </div>
             <main>{children}</main>

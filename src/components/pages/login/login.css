@@ -72,9 +72,9 @@ span.psw {
     
 }
 
-@media screen and (max-width: 1677px) {
+@media screen and (max-width: 1100px) {
     .container1{
-        margin-left: 400px;
+        margin-left: 200px;
     }
 
 }

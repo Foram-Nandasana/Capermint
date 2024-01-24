@@ -1,7 +1,5 @@
-
 import { useState } from "react";
-import "../Styles/login.css";
-// import { useEffect } from "react";
+import "../login/login.css";
 import { useNavigate } from "react-router-dom";
 
 export const Login = () => {
@@ -22,20 +20,12 @@ export const Login = () => {
     }
 
     const login = (data) => {
-        // localStorage.setItem('Login',true);
         localStorage.setItem('Login', JSON.stringify(data));
         navigate('/')
     }
 
     const navigate = useNavigate();
-    // useEffect(() => {
-    //     let login = localStorage.getItem('Login');
-    //     console.log(login);
-    //     if (login) {
 
-    //         navigate('/')
-    //     }
-    // });
     return (
         <form onSubmit={handleSubmit}>
             <div className="container1">

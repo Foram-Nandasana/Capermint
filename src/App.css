@@ -30,7 +30,7 @@ main {
 }
 
 .logo {
-  font-size: 30px;
+  font-size: 40px;
   padding: 10px;
 }
 
@@ -61,5 +61,5 @@ main {
 
 .icon,
 .link_text {
-  font-size: 20px;
+  font-size: 35px;
 }
