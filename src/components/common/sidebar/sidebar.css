@@ -14,11 +14,19 @@ body {
     padding: 15px;
     text-align: center;
     min-width: 200px;
-    transition: min-width 0.5s;
-    height: 698px
+    /* transition: min-width 0.5s; */
+    height: 698px;
+  }
+  .sidebar {
+    background: #252525e2;
+    color: #fff;
+    height: 100vh;
+    width: 200px;
+    transition: all 0.5s;
+    padding: 15px;
+    text-align: center;
   }
 
-  
   
   .menu-btn {
     cursor: pointer;
@@ -70,14 +78,14 @@ body {
   }
   
   
-  .sidebar {
+  /* .sidebar {
     background: #252525e2;
     color: #fff;
     height: 100vh;
     width: 200px;
     transition: all 0.5s;
   }
-  
+   */
   .top_section {
     display: flex;
     align-items: center;
@@ -132,7 +140,7 @@ body {
   /* Media queries for responsiveness */
   
   @media only screen and (max-width: 768px) {
-    .menu-bar {
+    .sidebar {
       min-width: 50px;
     }
   
@@ -143,10 +151,11 @@ body {
     }
   
     .link .link_text {
-      font-size: 0;
+      display: none;
     }
 
     .logo{
+        display: none;
         font-size: 0;
     }
   

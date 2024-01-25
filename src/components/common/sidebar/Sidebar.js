@@ -41,13 +41,13 @@ export const Sidebar = ({ children }) => {
     ]
     return (
         <div className="dashboard-container">
-            <div style={{ width: isOpen ? "300px" : "90px" }} className="menu-bar " >
+            <div style={{ width: isOpen ? "300px" : "40px" }} className="sidebar" >
                 <div className="top_section">
                     <div style={{ marginLeft: isOpen ? "4px" : "-5px" }} className="menu-btn">
                         <img src="image/Capermint.png" alt="Logo" width={50} onClick={toggle} />
                     </div>
             
-                        <h1 style={{ display: isOpen ? "flex" : "block" }} className="logo">Capermint</h1>
+                        <h1 style={{ display: isOpen ? "flex" : "none" }} className="logo">Capermint</h1>
                         
                     
                 </div>
@@ -63,7 +63,7 @@ export const Sidebar = ({ children }) => {
                     menuItem.map((item, index) => (
                         <NavLink to={item.path} key={index} className="link" activeclassName="active">
                             <div className="icon">{item.icon}</div>
-                            <div style={{ display: isOpen ? "flex" : "block" }} className="link_text">{item.name}</div>
+                            <div style={{ display: isOpen ? "flex" : "none" }} className="link_text">{item.name}</div>
                         </NavLink>
                     ))
                 }
