@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "../login/login.css";
 import { useNavigate } from "react-router-dom";
+import { Padding } from "@mui/icons-material";
 
 export const Login = () => {
 
@@ -27,6 +28,7 @@ export const Login = () => {
     const navigate = useNavigate();
 
     return (
+        <main>
         <form onSubmit={handleSubmit}>
             <div className="container1">
                 <label for="uname"><b>Username</b></label>
@@ -53,5 +55,6 @@ export const Login = () => {
                 </div> */}
 
         </form>
+        </main>
     )
 }

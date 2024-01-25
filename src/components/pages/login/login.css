@@ -39,19 +39,30 @@ button:hover {
 
 
 .container1 {
+    display: flex;
+    flex-wrap: wrap;
     padding: 16px;
     background-color: #f1f1f1;
     width: 450px;
     align-items: center;
-    margin-top: 70px;
-    margin-left: 570px;
+    /* margin-top: 70px;
+    margin-left: 570px; */
     justify-content: center;
     border: none;
+    flex: 1;
 }
 
 span.psw {
     float: right;
     padding-top: 16px;
+}
+
+main{
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    min-height: 50vh;
+    width: 70%;
 }
 
 /* Change styles for span and cancel button on extra small screens */
