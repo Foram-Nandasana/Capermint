@@ -6,6 +6,7 @@ import {
     FaHome,
     FaUnlock
 } from "react-icons/fa";
+import "../navbar/navBar.css"
 import { NavLink } from 'react-router-dom';
 
 

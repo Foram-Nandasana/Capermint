@@ -6,7 +6,6 @@ import Contact from '../pages/contact/Contact';
 import { Login } from '../pages/login/Login';
 import { Logout } from '../pages/login/Logout';
 import { Protected } from '../common/Protected';
-import Navbar from '../common/navbar/Navbar';
 import { Sidebar } from '../common/sidebar/Sidebar';
 
 export const Allroutes = () => {
