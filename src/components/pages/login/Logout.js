@@ -28,6 +28,7 @@ container1: {
   width: '450px',
   alignItems: 'center',
   justifyContent: 'center',
+  marginLeft: '40%',
   border: 'none',
   flex: 1,
 },
@@ -39,7 +40,16 @@ main:{
   minHeight: '50vh',
   width: '70 %',
 },
-
+'@media only screen and (max-width: 1000px)': {
+  container1:{
+      marginLeft: '30%',
+  },
+},
+'@media only screen and (max-width: 800px)': {
+  container1:{
+      marginLeft: '20%',
+  },
+},
 });
 
 export const Logout = () => {

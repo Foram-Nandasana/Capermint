@@ -2,12 +2,9 @@ import { useState } from "react";
 import "../login/login.css";
 import { useNavigate } from "react-router-dom";
 import { makeStyles } from '@material-ui/core/styles';
-// import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
-    // body: {
-    //   fontFamily: 'Arial, Helvetica, sans-serif',
-    // },
+  
     input: {
       width: '100%',
       padding: '12px 20px',
@@ -38,13 +35,14 @@ const useStyles = makeStyles((theme) => ({
       alignItems: 'center',
       justifyContent: 'center',
       border: 'none',
+      marginLeft: '40%',
       flex: 1,
-      [theme.breakpoints.down('sm')]: {
-        marginLeft: '180px',
-      },
-      [theme.breakpoints.down('md')]: {
-        marginLeft: '200px',
-      },
+    //   [theme.breakpoints.down('sm')]: {
+    //     marginLeft: '180px',
+    //   },
+    //   [theme.breakpoints.down('md')]: {
+    //     marginLeft: '200px',
+    //   },
     },
     psw: {
       float: 'right',
@@ -56,6 +54,16 @@ const useStyles = makeStyles((theme) => ({
       alignItems: 'center',
       minHeight: '50vh',
       width: '70%',
+    },
+    '@media only screen and (max-width: 1000px)': {
+        container1:{
+            marginLeft: '30%',
+        },
+    },
+    '@media only screen and (max-width: 800px)': {
+        container1:{
+            marginLeft: '20%',
+        },
     },
   }));
 export const Login = () => {

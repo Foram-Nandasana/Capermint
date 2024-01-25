@@ -19,7 +19,7 @@ const useStyles = makeStyles(() => ({
         background: '#252525e2',
         color: '#fff',
         height: '100vh',
-        width: 200,
+        // width: 200,
         transition: 'all 0.5s',
         padding: 15,
         textAlign: 'center',
@@ -127,7 +127,7 @@ export const Sidebar = ({ children }) => {
     ]
     return (
         <div className={classes.dashboardContainer}>
-            <div style={{ width: isOpen ? "300px" : "40px" }} className={classes.sideBar} >
+            <div  className={classes.sideBar} >
                 <div className={classes.top_section}>
                     <div style={{ marginLeft: isOpen ? "4px" : "-5px" }} className={classes.menuBtn}>
                         <img src="image/Capermint.png" alt="Logo" width={50} onClick={toggle} />
