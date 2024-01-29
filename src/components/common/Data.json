@@ -1,0 +1,23 @@
+[
+    {
+        "id" : 1,
+        "title" : "Jacket",
+        "des" : "Material composition 60% Cotton, 40% Polyester",
+        "img" : "image/jacket.webp",
+        "price" : "₹1100"
+    },
+    {
+        "id" : 2,
+        "title" : "T-Shirt",
+        "des" : "Material composition 60% Cotton, 40% Polyester",
+        "img" : "image/T-Shirt.webp",
+        "price" : "₹500"
+    },
+    {
+        "id" : 3,
+        "title" : "Jeans",
+        "des" : "Material composition 60% Cotton, 40% Polyester",
+        "img" : "image/jeans.jpg",
+        "price" : "₹1200"
+    }
+]

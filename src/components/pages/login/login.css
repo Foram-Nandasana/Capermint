@@ -57,7 +57,7 @@ main{
     justify-content: center;
     align-items:center;
     min-height: 50vh;
-    width: 70%;
+    /* width: 70%; */
 }
 
 /* Change styles for span and cancel button on extra small screens */

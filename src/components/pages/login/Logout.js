@@ -38,7 +38,7 @@ main:{
   justifyContent: 'center',
   alignItems: 'center',
   minHeight: '50vh',
-  width: '70 %',
+  // width: '70 %',
 },
 '@media only screen and (max-width: 1000px)': {
   container1:{

@@ -4,12 +4,19 @@ import {
     FaCommentAlt,
     FaLock,
     FaHome,
-    FaUnlock
+    FaUnlock,
+    FaShoppingBag
 } from "react-icons/fa";
 import { NavLink } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(() => ({
+
+"*": {
+    margin: 0,
+    padding: 0,
+    textDecoration: "none",
+},
 
     dashboardContainer: {
         display: 'flex',
@@ -31,7 +38,7 @@ const useStyles = makeStyles(() => ({
 
     mainContent: {
         flexGrow: 1,
-        padding: 15,
+        // padding: 20,
     },
 
     topSection: {
@@ -103,6 +110,11 @@ export const Sidebar = ({ children }) => {
             path: "/",
             name: "Home",
             icon: <FaHome />
+        },
+        {
+            path: "/Product",
+            name: "Product",
+            icon: <FaShoppingBag />
         },
         {
             path: "/About",
