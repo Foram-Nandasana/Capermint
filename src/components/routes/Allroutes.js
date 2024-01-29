@@ -6,10 +6,8 @@ import Contact from '../pages/contact/Contact';
 import { Login } from '../pages/login/Login';
 import { Logout } from '../pages/login/Logout';
 import { Protected } from '../common/Protected';
-// import { Sidebar } from '../common/sidebar/Sidebar';
 import { Sidebar } from '../common/Sidebar';
 import { Product } from '../common/Product';
-
 export const Allroutes = () => {
     return (
         <BrowserRouter>

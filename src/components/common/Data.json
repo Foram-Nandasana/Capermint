@@ -19,5 +19,12 @@
         "des" : "Material composition 60% Cotton, 40% Polyester",
         "img" : "image/jeans.jpg",
         "price" : "₹1200"
+    },
+    {
+        "id" : 4,
+        "title" : "Shoes",
+        "des" : "Material composition 60% Cotton, 40% Polyester",
+        "img" : "image/shoes.webp",
+        "price" : "₹1000"
     }
 ]
