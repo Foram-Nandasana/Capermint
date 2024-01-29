@@ -6,12 +6,12 @@ import Contact from '../pages/contact/Contact';
 import { Login } from '../pages/login/Login';
 import { Logout } from '../pages/login/Logout';
 import { Protected } from '../common/Protected';
-import Navbar from '../common/navbar/Navbar';
+import { Sidebar } from '../common/sidebar/Sidebar';
 
 export const Allroutes = () => {
     return (
         <BrowserRouter>
-            <Navbar>
+            {/* <Navbar> */}<Sidebar>
                 <Routes>
                     <Route path="/" element={<Protected Component={Home} />} />
                     <Route path="/About" element={<Protected Component={About} />} />
@@ -19,7 +19,8 @@ export const Allroutes = () => {
                     <Route path="Login" element={<Login />} />
                     <Route path="Logout" element={<Protected Component={Logout} />} />
                 </Routes>
-            </Navbar>
+                </Sidebar>
+            {/* </Navbar> */}
         </BrowserRouter>
     );
 }

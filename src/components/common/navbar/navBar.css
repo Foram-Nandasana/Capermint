@@ -1,4 +1,4 @@
-/* * {
+* {
   margin: 0;
   padding: 0;
   text-decoration: none;
@@ -43,9 +43,9 @@ main {
 
 .link {
   display: flex;
-  color: #fff; */
+  color: #fff;
   /* padding: 10px 15px; */
-  /* margin-left: 20px;
+  margin-left: 20px;
   gap: 15px;
   transition: all 0.5s;
 }
@@ -70,4 +70,4 @@ main {
   position: absolute;
   bottom: 0;
 }
- */
+

@@ -6,6 +6,7 @@ import {
     FaHome,
     FaUnlock
 } from "react-icons/fa";
+import "../navbar/navBar.css"
 import { NavLink } from 'react-router-dom';
 
 
@@ -41,6 +42,7 @@ const Navbar = ({ children }) => {
     ]
 
     return (
+       
         <div className="container">
             <div style={{ width: isOpen ? "300px" : "90px" }} className="sidebar">
                 <div className="top_section">
@@ -48,7 +50,6 @@ const Navbar = ({ children }) => {
                         <img src="image/Capermint.png" alt="Logo" width={50} onClick={toggle} />
                     </div>
                     <h1 style={{ display: isOpen ? "block" : "none" }} className="logo">Capermint</h1>
-
                 </div>
                 {
                     menuItem.map((item, index) => (
@@ -57,11 +58,11 @@ const Navbar = ({ children }) => {
                             <div style={{ display: isOpen ? "block" : "none" }} className="link_text">{item.name}</div>
                         </NavLink>
                     ))
-
                 }
             </div>
             <main>{children}</main>
         </div>
+      
     );
 };
 
