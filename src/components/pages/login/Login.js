@@ -4,35 +4,14 @@ import { useNavigate } from "react-router-dom";
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
-  
-    // input: {
-    //   width: '100%',
-    //   padding: '12px 20px',
-    //   margin: '8px 0',
-    //   display: 'inline-block',
-    //   border: '1px solid #ccc',
-    //   boxSizing: 'border-box',
-    // },
-    // button: {
-    //   backgroundColor: '#297ce2',
-    //   color: 'white',
-    //   padding: '14px 20px',
-    //   margin: '8px 0',
-    //   border: 'none',
-    //   cursor: 'pointer',
-    //   width: '100%',
-    //   '&:hover': {
-    //     opacity: 0.8,
-    //   },
-    // },
    
     container1: {
       // display: 'flex',
       flexWrap: 'wrap',
       padding: '16px',
       backgroundColor: '#f1f1f1',
-      // width: '450px',
-      // alignItems: 'center',
+      width: '450px',
+      alignItems: 'center',
       // justifyContent: 'center',
       // border: 'none',
       // marginLeft: '40%',

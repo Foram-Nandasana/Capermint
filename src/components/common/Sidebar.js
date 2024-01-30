@@ -20,16 +20,19 @@ const useStyles = makeStyles(() => ({
 
     dashboardContainer: {
         display: 'flex',
+      
     },
 
+   
     sideBar: {
         background: '#252525e2',
         color: '#fff',
         height: '100vh',
-        // width: 200,
+       
         transition: 'all 0.5s',
         padding: 15,
         textAlign: 'center',
+     
     },
     menuBtn: {
         cursor: 'pointer',
@@ -38,6 +41,8 @@ const useStyles = makeStyles(() => ({
 
     mainContent: {
         flexGrow: 1,
+        height: '100vh',
+        overflowY : 'scroll',
         // padding: 20,
     },
 

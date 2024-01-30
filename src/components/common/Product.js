@@ -1,9 +1,11 @@
 import React from 'react'
-import { Card, CardContent, Typography } from '@material-ui/core'
+import { Card, CardContent } from '@material-ui/core'
 import Data from './Data.json'
 import CardMedia from '@mui/material/CardMedia';
 import { Button, CardActionArea, CardActions } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import './Font.css';
+import {useNavigate} from 'react-router-dom'
 
 const useStyles = makeStyles(() => ({
 
@@ -23,16 +25,16 @@ const useStyles = makeStyles(() => ({
         fontSize: 'clamp(30px, 4vw , 50px)',
     },
     textTitle: {
-        fontSize: 'clamp(20px, 3vw , 50px)',
+        fontSize: 'clamp(20px, 2vw , 50px)',
     },
     textDes: {
-        fontSize: 'clamp(15px, 2vw , 40px)',
+        fontSize: 'clamp(15px, 1vw , 40px)',
     },
     textPrice: {
-        fontSize: 'clamp(20px, 3vw , 40px)',
+        fontSize: 'clamp(20px, 2vw , 40px)',
     },
     textButton: {
-        fontSize: 'clamp(10px, 1.5vw , 30px)',
+        fontSize: 'clamp(10px, 1vw , 30px)',
     },
 
 }));
@@ -40,44 +42,52 @@ const useStyles = makeStyles(() => ({
 export const Product = () => {
 
     const classes = useStyles();
+    const navigate = useNavigate();
 
+    const handleCard = (data) => {
+
+       navigate(`/Product/${data}`);
+    }
 
     return (
-        <>
-            <h2 className={classes.title}>Products</h2>
+        
+            <div className='ObjectSansRegular'>
+                <h2 className={classes.title} >Products</h2>
 
-            <div className={classes.Container}>
+                <div className={classes.Container}>
 
-                {Data.map((result, index) => (
-                    <Card className={classes.card} sx={{ maxWidth: 345 }}>
-                        <CardActionArea>
-                            <CardMedia
-                                component="img"
-                                height="300"
-                                image={result.img}
-                                alt="green iguana"
-                                style={{ borderRadius: "5px" }}
-                            />
-                            <CardContent>
-                                <Typography className={classes.textTitle} gutterBottom variant="h5" component="div">
-                                    {result.title}
-                                </Typography>
-                                <Typography className={classes.textDes} variant="body2" color="text.secondary">
-                                    {result.des}
-                                </Typography>
-                            </CardContent>
-                        </CardActionArea>
-                        <CardActions>
-                            <Typography className={classes.textPrice} variant="h6" color="text.secondary">
-                                {result.price}
-                            </Typography>
+                    {Data.map((result, index) => (
+                        <Card className={classes.card} onClick={() => handleCard(result.id)} >
+                            <CardActionArea>
+                                <CardMedia
+                                    component="img"
+                                    height="300"
+                                    image={result.img}
+                                    alt="green iguana"
+                                    style={{ borderRadius: "5px" }}
+                                />
+                                <CardContent>
+                                    <div className={classes.textTitle} >
+                                        {result.title}
+                                    </div>
 
-                            <Button className={classes.textButton} variant="outlined" size="medium">Add to Card</Button>
+                                    <div className={classes.textDes}>
+                                        {result.des}
+                                    </div>
+                                </CardContent>
+                            </CardActionArea>
+                            <CardActions>
+                                <div className={classes.textPrice} >
+                                    {result.price}
+                                </div>
 
-                        </CardActions>
-                    </Card>
-                ))}
+                                <Button className={classes.textButton} variant="outlined" size="medium">Add to Card</Button>
+
+                            </CardActions>
+                        </Card>
+                    ))}
+                </div>
             </div>
-        </>
+      
     )
 }
