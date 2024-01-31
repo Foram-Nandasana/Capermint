@@ -62,7 +62,7 @@ export const Product = () => {
                                 <CardMedia
                                     component="img"
                                     height="300"
-                                    image={result.img}
+                                    image={result.img[0]}
                                     alt="green iguana"
                                     style={{ borderRadius: "5px" }}
                                 />
