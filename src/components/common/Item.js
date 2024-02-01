@@ -21,19 +21,19 @@ const useStyles = makeStyles(() => ({
   //   background: 'radial-gradient(circle, rgb(198, 217, 236) 0%, rgb(102, 153, 204) 100%)'
   // },
   title: {
-    fontSize: 'clamp(30px, 4vw , 50px)',
+    fontSize: 'clamp(30px, 3vw , 50px)',
   },
   textTitle: {
-    fontSize: 'clamp(20px, 2vw , 50px)',
+    fontSize: 'clamp(20px, 1.5vw , 50px)',
   },
   textDes: {
-    fontSize: 'clamp(15px, 2vw , 40px)',
+    fontSize: 'clamp(15px, 1vw , 40px)',
   },
   textPrice: {
-    fontSize: 'clamp(20px, 2vw , 40px)',
+    fontSize: 'clamp(20px, 1.5vw , 40px)',
   },
   textButton: {
-    fontSize: 'clamp(10px, 2vw , 30px)',
+    fontSize: 'clamp(10px, 1.5vw , 30px)',
   },
   card: {
     // maxHeight: '90vh',
@@ -46,7 +46,8 @@ const useStyles = makeStyles(() => ({
     flexWrap: 'wrap',
     gap: '1em',
     // flex: '1 0 8rem',
-    background: 'radial-gradient(circle, rgb(198, 217, 236) 0%, rgb(102, 153, 204) 100%)'
+    backgroundColor: '#f1f1f1',
+    // background: 'radial-gradient(circle, rgb(198, 217, 236) 0%, rgb(102, 153, 204) 100%)'
   },
 
 }))
