@@ -1,0 +1,30 @@
+[
+    {
+        "id" : 1,
+        "title" : "Jacket",
+        "des" : "  Material composition 60% Cotton, 40% Polyester",
+        "img" : [
+            "/image/jacket1.webp", "/image/jacket3.jpg", "/image/jacket4.webp"],
+      
+        "price" : "₹1100"
+    },
+    {
+        "id" : 2,
+        "title" : "Watch",
+        "des" : "  Material composition 60% Cotton, 40% Polyester",
+        "img" : [
+            "/image/watch.jpg", "/image/watch1.jpg", "/image/watch2.jpg"],
+      
+        "price" : "₹500"
+    },
+   
+    {
+        "id" : 3,
+        "title" : "Shoes",
+        "des" : "  Material composition 60% Cotton, 40% Polyester",
+        "img" : [
+            "/image/shoes.webp", "/image/shoes2.webp", "/image/shoes3.webp"],
+      
+        "price" : "₹1000"
+    }
+]

@@ -71,3 +71,11 @@ main {
   bottom: 0;
 }
  */
+/* @font-face {
+  font-family: poppins-Regular;
+  src: url(../public/Poppins-Regular.ttf);
+}
+
+.poppins-Regular{
+  font-family: poppins-Regular;
+} */

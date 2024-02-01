@@ -4,39 +4,18 @@ import { useNavigate } from "react-router-dom";
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
-  
-    input: {
-      width: '100%',
-      padding: '12px 20px',
-      margin: '8px 0',
-      display: 'inline-block',
-      border: '1px solid #ccc',
-      boxSizing: 'border-box',
-    },
-    button: {
-      backgroundColor: '#297ce2',
-      color: 'white',
-      padding: '14px 20px',
-      margin: '8px 0',
-      border: 'none',
-      cursor: 'pointer',
-      width: '100%',
-      '&:hover': {
-        opacity: 0.8,
-      },
-    },
    
     container1: {
-      display: 'flex',
+      // display: 'flex',
       flexWrap: 'wrap',
       padding: '16px',
       backgroundColor: '#f1f1f1',
       width: '450px',
       alignItems: 'center',
-      justifyContent: 'center',
-      border: 'none',
-      marginLeft: '40%',
-      flex: 1,
+      // justifyContent: 'center',
+      // border: 'none',
+      // marginLeft: '40%',
+      // flex: 1,
     //   [theme.breakpoints.down('sm')]: {
     //     marginLeft: '180px',
     //   },
@@ -44,27 +23,27 @@ const useStyles = makeStyles((theme) => ({
     //     marginLeft: '200px',
     //   },
     },
-    psw: {
-      float: 'right',
-      paddingTop: '16px',
-    },
-    main: {
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-      minHeight: '50vh',
-      width: '70%',
-    },
-    '@media only screen and (max-width: 1000px)': {
-        container1:{
-            marginLeft: '30%',
-        },
-    },
-    '@media only screen and (max-width: 800px)': {
-        container1:{
-            marginLeft: '20%',
-        },
-    },
+    // psw: {
+    //   float: 'right',
+    //   paddingTop: '16px',
+    // },
+    // main: {
+    //   display: 'flex',
+    //   justifyContent: 'center',
+    //   alignItems: 'center',
+    //   minHeight: '50vh',
+    //   // width: '70%',
+    // },
+    // '@media only screen and (max-width: 1000px)': {
+    //     container1:{
+    //         marginLeft: '30%',
+    //     },
+    // },
+    // '@media only screen and (max-width: 800px)': {
+    //     container1:{
+    //         marginLeft: '20%',
+    //     },
+    // },
   }));
 export const Login = () => {
 

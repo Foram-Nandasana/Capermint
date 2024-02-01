@@ -1,0 +1,16 @@
+@font-face {
+    font-family: poppins-Regular;
+    src: url(/public/Poppins-Regular.ttf);
+  }
+  
+  .poppins-Regular{
+    font-family: poppins-Regular;
+  }
+
+  @font-face {
+    font-family: ObjectSansRegular;
+    src: url(/public/Object\ Sans\ Regular.otf);
+  }
+  .ObjectSansRegular{
+    font-family: ObjectSansRegular;
+  }
