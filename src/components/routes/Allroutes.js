@@ -9,6 +9,7 @@ import { Protected } from '../common/Protected';
 import { Sidebar } from '../common/Sidebar';
 import { Product } from '../common/Product';
 import { Item } from '../common/Item';
+import { AddCart } from '../common/component/AddCart';
 export const Allroutes = () => {
     return (
         <BrowserRouter>
@@ -19,6 +20,7 @@ export const Allroutes = () => {
                     <Route path="/About" element={<Protected Component={About} />} />
                     <Route path="/Contact" element={<Protected Component={Contact} />} />
                     <Route path="/Product/:id" element={<Item/>} />
+                    <Route path="/AddCart/:id" element={<AddCart/>} />
                     <Route path="Login" element={<Login />} />
                     <Route path="Logout" element={<Protected Component={Logout} />} />
                 </Routes>

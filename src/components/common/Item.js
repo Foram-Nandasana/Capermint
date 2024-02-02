@@ -8,10 +8,18 @@ import Box from '@mui/material/Box';
 import SwipeableViews from 'react-swipeable-views';
 import { autoPlay } from 'react-swipeable-views-utils';
 import { makeStyles } from '@material-ui/core/styles';
-
+import Card from './component/Card';
 
 const useStyles = makeStyles(() => ({
 
+
+  cardArea: {
+    display: 'grid',
+    columnGap: '15px',
+    gridTemplateColumns: 'auto auto',
+    padding: '20px',
+    fontSize: '30px',
+},
   // Paper: {
   //   textAlign: 'center',
   //   alignContent: 'center',
@@ -67,8 +75,9 @@ export const Item = ({ }) => {
   const ids = Number(id)
   const selectedItem = data.find(item => item.id === ids);
 
+
   return (
-    <card className={classes.card}>
+    <Card variant="singleCard" className={classes.card}>
       {/* // <card sx={{ maxHeight: '90vh',maxWidth:'90vw', flexGrow: 1 }}> */}
       {/* <Paper className={classes.Paper}> */}
       {/* // square
@@ -129,16 +138,16 @@ export const Item = ({ }) => {
         <p>Data not found</p>
       )}
 
-      <CardActions>
+      <div className={classes.cardArea}>
 
         {/* <Button variant="outlined" size="medium">Add to Card</Button> */}
-        <Button className={classes.textButton} variant="contained">Add to Card</Button>
+        <Button className={classes.textButton} variant="contained" >Add to Card</Button>
         <Button className={classes.textButton} variant="contained">Buy Now</Button>
 
-      </CardActions>
+      </div>
       {/* </Paper> */}
 
-    </card>
+    </Card>
   );
 
 

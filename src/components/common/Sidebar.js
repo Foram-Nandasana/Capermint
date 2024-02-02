@@ -5,7 +5,8 @@ import {
     FaLock,
     FaHome,
     FaUnlock,
-    FaShoppingBag
+    FaShoppingBag,
+    FaShoppingCart
 } from "react-icons/fa";
 import { NavLink } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
@@ -41,9 +42,13 @@ const useStyles = makeStyles(() => ({
 
     mainContent: {
         flexGrow: 1,
+        
+    },
+
+    main1:{
         height: '100vh',
         overflowY : 'scroll',
-        // padding: 20,
+        padding: 20,
     },
 
     topSection: {
@@ -122,6 +127,11 @@ export const Sidebar = ({ children }) => {
             icon: <FaShoppingBag />
         },
         {
+            path: "/AddCart/:id",
+            name: "Cart",
+            icon: <FaShoppingCart />
+        },
+        {
             path: "/About",
             name: "About",
             icon: <FaUserAlt />
@@ -162,7 +172,7 @@ export const Sidebar = ({ children }) => {
                 }
             </div>
             <div className={classes.mainContent}>
-                <main>{children}</main>
+                <main className={classes.main1}>{children}</main>
             </div>
         </div>
     )

@@ -8,7 +8,8 @@ import './Font.css';
 import { useNavigate } from 'react-router-dom'
 import Typo from './component/Typo';
 import Card from './component/Card';
-import CardMedia from './component/CardMedia';
+import { useDispatch } from 'react-redux';
+import { addToCard } from '../../store/slices/productSlice';
 const useStyles = makeStyles(() => ({
 
     cardArea: {
@@ -18,11 +19,7 @@ const useStyles = makeStyles(() => ({
         padding: '20px',
         fontSize: '30px',
     },
-    main:{
-        display: 'grid',
-        columnGap: '30px',
-        gridTemplateColumns: 'auto auto auto',
-    },
+    
     Container: {
         display: 'flex',
         flexWrap: 'wrap',
@@ -38,13 +35,13 @@ const useStyles = makeStyles(() => ({
         fontSize: 'clamp(8px, 1vw , 25px)',
     },
     CardMedia:{
-        borderRadius: "10px",
+        // borderRadius: "10px",
         objectFit: "cover",
         height:"200px",
         width: "100%",
         display: "block",
-          backgroundSize: "cover",
-          verticalAlign: "middle",
+        backgroundSize: "cover",
+        verticalAlign: "middle",
       },
     // '@media only screen and (max-width: 600px)': {
     //         cardArea:{
@@ -57,22 +54,27 @@ const useStyles = makeStyles(() => ({
 
 export const Product = () => {
 
+    const dispatch = useDispatch();
     const classes = useStyles();
     const navigate = useNavigate();
 
+    const addCard= (value) => {
+        console.log(value ,"product");
+        dispatch(addToCard(value));
+        navigate(`/AddCart/${value}`);
+    };
     const handleCard = (data) => {
-
         navigate(`/Product/${data}`);
     }
 
     return (
         <div className='ObjectSansRegular'>
             <h2 className={classes.title} >Products</h2>
-            <div className={classes.main}>
+            
             <div className={classes.Container}>
                 {Data.map((result, index) => (
-                    <Card className={classes.card}  >
-                        <div style={{padding: '2px 16px'}} onClick={() => handleCard(result.id)}>
+                    <Card variant="card" className={classes.card}  >
+                        <div onClick={() => handleCard(result.id)}>
                             {/* <CardMedia
                                 component="img"
                                 height="300"
@@ -97,12 +99,12 @@ export const Product = () => {
                             <Typo variant="price">
                                 {result.price}
                             </Typo>
-                            <Button className={classes.textButton} variant="outlined" size="medium">Add to Card</Button>
+                            <Button className={classes.textButton} variant="outlined" size="medium" onClick={() => addCard(result.id)}>Add to Card</Button>
                         </div>
                     </Card>
                 ))}
             </div>
         </div>
-        </div>
+       
     )
 }

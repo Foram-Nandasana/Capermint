@@ -23,13 +23,21 @@ const useStyles = makeStyles({
             flexBasis: '100%'
     
         }
+    },
+
+    singleCard:{
+        boxShadow: '0 4px 8px 0 rgba(0,0,0,0.2)',
+        transition: '0.3s',
+        width: '90vw',
+        height: '80vh'
     }
 })
 
-const Card = ({ children }) => {
+const Card = ({ children, variant }) => {
     const classes = useStyles()
     return (
-        <div className={classes.card}>{children}</div>
+        // <div className={classes.card}>{children}</div>
+        <p className={variant === "card" ? classes.card : classes.singleCard} >{children}</p>
     )
 }
 
