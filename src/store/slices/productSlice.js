@@ -10,6 +10,7 @@ const productSlice = createSlice({
             console.log(action.payload);
         },
         buyNow(state,action){},
+        removeUser(state, action) {},
     },
 
 });
@@ -17,7 +18,7 @@ const productSlice = createSlice({
 console.log(productSlice.actions);
 
 // export { productSlice };
-export const { addToCard, buyNow} = productSlice.actions;
+export const { addToCard, buyNow, removeUser} = productSlice.actions;
 
 export default productSlice.reducer;
 

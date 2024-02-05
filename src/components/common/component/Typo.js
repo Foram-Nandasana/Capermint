@@ -11,7 +11,7 @@ const useStyles = makeStyles({
       padding: '2px 16px'
     },
     price: {
-      fontSize: 'clamp(10px, 1.5vw , 20px)',
+      fontSize: 'clamp(15px, 1.5vw , 20px)',
       lineHeight: "2",
       letterSpacing: "0.00735em",
       fontWeight:500,
@@ -20,7 +20,7 @@ const useStyles = makeStyles({
   
     description:{
 
-      fontSize: 'clamp(10px, 1.5vw , 20px)',
+      fontSize: 'clamp(15px, 1.5vw , 20px)',
       lineHeight: "1.5",
       letterSpacing: "0.00735em",
       fontWeight:300,

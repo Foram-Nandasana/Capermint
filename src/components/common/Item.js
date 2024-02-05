@@ -1,10 +1,9 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import { Button, CardActions, card } from '@material-ui/core';
+import { Button} from '@material-ui/core';
 import data from './Data.json';
 import { useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
-// import Paper from '@mui/material/Paper';
 import SwipeableViews from 'react-swipeable-views';
 import { autoPlay } from 'react-swipeable-views-utils';
 import { makeStyles } from '@material-ui/core/styles';
@@ -128,7 +127,7 @@ export const Item = ({ }) => {
         ))}
       </AutoPlaySwipeableViews>
 
-      {/* <Paper className={classes.Paper}> */}
+
       {selectedItem ? (
         <>
           <p className={classes.textDes}>{selectedItem.des}</p>
@@ -145,7 +144,7 @@ export const Item = ({ }) => {
         <Button className={classes.textButton} variant="contained">Buy Now</Button>
 
       </div>
-      {/* </Paper> */}
+      
 
     </Card>
   );

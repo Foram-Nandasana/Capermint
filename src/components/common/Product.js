@@ -18,8 +18,7 @@ const useStyles = makeStyles(() => ({
         gridTemplateColumns: 'auto auto',
         padding: '20px',
         fontSize: '30px',
-    },
-    
+    }, 
     Container: {
         display: 'flex',
         flexWrap: 'wrap',
@@ -61,7 +60,7 @@ export const Product = () => {
     const addCard= (value) => {
         console.log(value ,"product");
         dispatch(addToCard(value));
-        navigate(`/AddCart/${value}`);
+        // navigate(`/AddCart/${value}`);
     };
     const handleCard = (data) => {
         navigate(`/Product/${data}`);
@@ -73,7 +72,8 @@ export const Product = () => {
             
             <div className={classes.Container}>
                 {Data.map((result, index) => (
-                    <Card variant="card" className={classes.card}  >
+
+                    <Card variant="card" className={classes.card} key={index} >
                         <div onClick={() => handleCard(result.id)}>
                             {/* <CardMedia
                                 component="img"
@@ -93,15 +93,16 @@ export const Product = () => {
                                 <Typo variant= " description">
                                     {result.des}
                                 </Typo>
-                          
+                               
                         </div>
                         <div className={classes.cardArea}>
                             <Typo variant="price">
                                 {result.price}
-                            </Typo>
-                            <Button className={classes.textButton} variant="outlined" size="medium" onClick={() => addCard(result.id)}>Add to Card</Button>
+                            </Typo>   
+                            <Button className={classes.textButton} variant="outlined" size="medium" onClick={() => addCard(result)}>Add to Card</Button>
                         </div>
                     </Card>
+                    
                 ))}
             </div>
         </div>
