@@ -15,9 +15,7 @@ const useStyles = makeStyles({
 })
 
 const CardActionArea = ({ children, variant }) => {
-
   const classes = useStyles()
-
   return (
     <div className={variant === "action1" ? classes.action1 : classes.action2}>{children}</div>
   )

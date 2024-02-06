@@ -13,44 +13,35 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(() => ({
 
-"*": {
-    margin: 0,
-    padding: 0,
-    textDecoration: "none",
-},
-
+    "*": {
+        margin: 0,
+        padding: 0,
+        textDecoration: "none",
+    },
     dashboardContainer: {
         display: 'flex',
-      
     },
-
-   
     sideBar: {
         background: '#252525e2',
         color: '#fff',
         height: '100vh',
-       
+
         transition: 'all 0.5s',
         padding: 15,
         textAlign: 'center',
-     
     },
     menuBtn: {
         cursor: 'pointer',
         display: 'block',
     },
-
     mainContent: {
         flexGrow: 1,
-        
     },
-
-    main1:{
+    main1: {
         height: '100vh',
-        overflowY : 'scroll',
+        overflowY: 'scroll',
         padding: 20,
     },
-
     topSection: {
         display: 'flex',
         alignItems: 'center',
@@ -59,7 +50,6 @@ const useStyles = makeStyles(() => ({
     logo: {
         fontSize: 30,
     },
-
     link: {
         display: 'flex',
         color: '#fff',
@@ -81,6 +71,7 @@ const useStyles = makeStyles(() => ({
     },
     linkText: {
         fontSize: 25,
+        textDecoration: 'none',
     },
     logout: {
         position: 'absolute',
@@ -112,7 +103,6 @@ const useStyles = makeStyles(() => ({
 export const Sidebar = ({ children }) => {
 
     const classes = useStyles();
-
     const [isOpen, setIsOpen] = useState(false);
     const toggle = () => setIsOpen(!isOpen);
     const menuItem = [
@@ -154,19 +144,18 @@ export const Sidebar = ({ children }) => {
     ]
     return (
         <div className={classes.dashboardContainer}>
-            <div  className={classes.sideBar} >
+            <div className={classes.sideBar} >
                 <div className={classes.top_section}>
                     <div style={{ marginLeft: isOpen ? "4px" : "-5px" }} className={classes.menuBtn}>
                         <img src="/image/Capermint.png" alt="Logo" width={50} onClick={toggle} />
                         <h1 style={{ display: isOpen ? "block" : "none" }} className={classes.logo}>Capermint</h1>
                     </div>
-
                 </div>
                 {
                     menuItem.map((item, index) => (
                         <NavLink to={item.path} key={index} className={classes.link} activeclassName={classes.active}>
                             <div className={classes.icon}>{item.icon}</div>
-                            <div style={{ display: isOpen ? "flex" : "none" }} className={classes.linkText}>{item.name}</div>
+                            <div style={{ display: isOpen ? "flex" : "none"} } className={classes.linkText}>{item.name}</div>
                         </NavLink>
                     ))
                 }

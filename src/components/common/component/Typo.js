@@ -1,6 +1,5 @@
 import { makeStyles } from '@material-ui/core'
 import React from 'react'
-// import './Font.css';
 
 const useStyles = makeStyles({
     title: {
@@ -17,9 +16,7 @@ const useStyles = makeStyles({
       fontWeight:500,
       padding: '0px 30px'
     },
-  
     description:{
-
       fontSize: 'clamp(15px, 1vw , 20px)',
       lineHeight: "1.5",
       letterSpacing: "0.00735em",
@@ -31,7 +28,6 @@ const Typo = ({ children, variant }) => {
 
 const classes = useStyles()
     return (
-      // <div className={classes.title}>{children}</div>
     <p className={variant === "title" ? classes.title : variant === "price" ? classes.price: classes.description} >{children}</p>
   )
 }

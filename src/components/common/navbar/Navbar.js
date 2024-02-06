@@ -9,7 +9,6 @@ import {
 import "../navbar/navBar.css"
 import { NavLink } from 'react-router-dom';
 
-
 const Navbar = ({ children }) => {
     const [isOpen, setIsOpen] = useState(false);
     const toggle = () => setIsOpen(!isOpen);
@@ -42,7 +41,6 @@ const Navbar = ({ children }) => {
     ]
 
     return (
-       
         <div className="container">
             <div style={{ width: isOpen ? "300px" : "90px" }} className="sidebar">
                 <div className="top_section">
@@ -62,7 +60,6 @@ const Navbar = ({ children }) => {
             </div>
             <main>{children}</main>
         </div>
-      
     );
 };
 

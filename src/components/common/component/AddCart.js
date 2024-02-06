@@ -4,14 +4,10 @@ import Card from './Card';
 import { makeStyles } from '@material-ui/core';
 import Typo from './Typo';
 import { removeUser } from '../../../store/slices/productSlice';
+
 const useStyles = makeStyles(() => ({
-
-
   mainContainer: {
     display: 'flex',
-    // padding: '0px 10px',
-    // flexWrap: 'wrap',
-    // gap: '1em',
     '@media only screen and (max-width: 740px)': {
       flexWrap: 'wrap',
       display: 'grid',
@@ -27,7 +23,6 @@ const useStyles = makeStyles(() => ({
     display: 'grid',
     columnGap: '15px',
     gridTemplateColumns: 'auto auto auto',
-  
     fontSize: '30px',
     '@media only screen and (max-width: 780px)': {
       gridTemplateColumns: '90px auto auto',
@@ -60,8 +55,6 @@ const useStyles = makeStyles(() => ({
     display: "block",
     backgroundSize: "cover",
     verticalAlign: "middle",
-    // gridRowStart: 1,
-    // gridRowEnd: 3,
     '@media only screen and (max-width: 740px)': {
       height: '100%',
       width: '100%',
@@ -71,55 +64,35 @@ const useStyles = makeStyles(() => ({
   container: {
     display: 'grid',
     gridTemplateRows: 'auto auto auto',
-    // gap: '-10px'
     padding: '0px 20px',
     '@media only screen and (max-width: 740px)': {
       gridTemplateRows: '40px 50px 50px',
     }
-
-
   },
   button: {
     backgroundColor: '#297ce2',
     color: 'white',
     alignItems: 'center',
     padding: '8px 10px',
-    // margin: '8px 0',
     border: 'none',
-    // cursor: 'pointer',
     width: '70px',
     fontSize: 'clamp(8px, 1.2vw , 25px)',
-
   },
-  // '@media only screen and (max-width: 600px)': {
-  //         cardArea:{
-  //             columnGap: '10px',
-  //             gridTemplateRows: 'auto auto',
-  //             gridTemplateColumns: 'none',
-  //         },
-  //     },
 }));
 
 
 export const AddCart = () => {
 
-  // const data = useSelector((state) => {
-  //     return state.product;
-  // } )
-
   const dispatch = useDispatch();
-
   const classes = useStyles();
   const data = useSelector((state) => state.product)
-  const deleteUser = () => {
-    dispatch(removeUser())
+  console.log(data, 'hyyy')
 
+  const deleteUser = (id) => {
+    dispatch(removeUser(id))
   }
-  console.log(data)
 
   return (
-
-    // <div  style={{ marginTop: '20vh' }}>
     <div className={classes.containerCard}>
       {data.map((product, id) => (
         <Card variant="addCard" className={classes.card} key={id} >
@@ -137,18 +110,12 @@ export const AddCart = () => {
                   {product.price}
                 </Typo>
                 <button className={classes.button} >Buy Now</button>
-                <button className={classes.button} onClick={() => deleteUser()}  >Delete</button>
+                <button className={classes.button} onClick={() => deleteUser(id)}  >Delete</button>
               </div>
             </div>
-
           </div>
-
         </Card>
-
       ))}
     </div>
-
-
-
   )
 }

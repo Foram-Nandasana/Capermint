@@ -3,7 +3,6 @@ import "../header/main.css";
 import { NavLink } from 'react-router-dom';
 
 const Header = () => {
-
     return (
         <header>
             <h2>Logo</h2>
@@ -13,9 +12,7 @@ const Header = () => {
                 <NavLink to='/Contact '>Contact</NavLink>
                 <NavLink to='/Login '>Login</NavLink>
                 <NavLink to='/Logout '>Logout</NavLink>
-
             </nav>
-
         </header>
     )
 }
