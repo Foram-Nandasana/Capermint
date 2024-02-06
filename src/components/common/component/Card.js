@@ -38,7 +38,7 @@ const useStyles = makeStyles({
         transition: '0.3s',
         width: '70vw',
         height: '25%',
-        padding: '20px',
+        padding: '20px 20px 40px',
 
         // '@media only screen and (max-width: 900px)':{
         //     flexGrow: 0,
@@ -46,10 +46,11 @@ const useStyles = makeStyles({
         //     flexBasis: '50%'
     
         // },
-        '@media only screen and (max-width: 600px)':{
+        '@media only screen and (max-width: 740px)':{
             flexGrow: 0,
             maxWidth: '100%',
-            flexBasis: '100%'
+            flexBasis: '50%',
+            height: '50%'
     
         }
        

@@ -20,7 +20,7 @@ export const Allroutes = () => {
                     <Route path="/About" element={<Protected Component={About} />} />
                     <Route path="/Contact" element={<Protected Component={Contact} />} />
                     <Route path="/Product/:id" element={<Item/>} />
-                    <Route path="/AddCart/:id" element={<AddCart/>} />
+                    <Route path="/AddCart/:id" element={<Protected Component={AddCart} />} />
                     <Route path="Login" element={<Login />} />
                     <Route path="Logout" element={<Protected Component={Logout} />} />
                 </Routes>

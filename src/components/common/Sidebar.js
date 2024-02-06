@@ -157,7 +157,7 @@ export const Sidebar = ({ children }) => {
             <div  className={classes.sideBar} >
                 <div className={classes.top_section}>
                     <div style={{ marginLeft: isOpen ? "4px" : "-5px" }} className={classes.menuBtn}>
-                        <img src="image/Capermint.png" alt="Logo" width={50} onClick={toggle} />
+                        <img src="/image/Capermint.png" alt="Logo" width={50} onClick={toggle} />
                         <h1 style={{ display: isOpen ? "block" : "none" }} className={classes.logo}>Capermint</h1>
                     </div>
 
