@@ -37,13 +37,22 @@ const useStyles = makeStyles(() => ({
         fontSize: 'clamp(8px, 1vw , 25px)',
     },
     CardMedia: {
-        objectFit: "cover",
+        objectFit: "fill",
         height: "200px",
         width: "100%",
         display: "block",
         backgroundSize: "cover",
         verticalAlign: "middle",
     },
+    button: {
+        backgroundColor: '#297ce2',
+        color: 'white',
+        alignItems: 'center',
+        padding: '8px 10px',
+        border: 'none',
+        width: '100px',
+        fontSize: 'clamp(8px, 1.2vw , 25px)',
+      },
 }));
 
 export const Product = () => {
@@ -56,6 +65,11 @@ export const Product = () => {
         console.log(value, "product");
         dispatch(addToCard(value));
     };
+
+const handleForm = () => {
+    navigate(`/ProductForm`)
+}
+
     const handleCard = (data) => {
         navigate(`/Product/${data}`);
     }
@@ -64,6 +78,7 @@ export const Product = () => {
         <div className={classes.mainContain}>
             <div className='ObjectSansRegular' >
                 <h2 className={classes.title} >Products</h2>
+                <button className={classes.button} onClick={() => handleForm()}>Add Product</button>
                 <div className={classes.Container}>
                     {Data.map((result, index) => (
                         <Card variant="card" className={classes.card} key={index} >
@@ -80,11 +95,13 @@ export const Product = () => {
                                 <Typo variant="price">
                                     {result.price}
                                 </Typo>
-                                <Button className={classes.textButton} variant="outlined" size="medium" onClick={() => addCard(result)}>Add to Card</Button>
+                                <Button className={classes.textButton} variant="outlined" size="small" onClick={() => addCard(result)}>Add to Card</Button>
                             </div>
                         </Card>
                     ))}
                 </div>
+    
+               
             </div>
 
         </div>

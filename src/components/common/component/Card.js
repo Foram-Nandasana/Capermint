@@ -24,21 +24,21 @@ const useStyles = makeStyles({
     singleCard: {
         boxShadow: '0 4px 8px 0 rgba(0,0,0,0.2)',
         transition: '0.3s',
-        width: '90vw',
-        height: '80vh',
+        width: '70vw',
+        height: '100vh',
     },
 
     addCard: {
         boxShadow: '0 4px 8px 0 rgba(0,0,0,0.2)',
         transition: '0.3s',
         width: '70vw',
-        height: '25%',
+        height: '30%',
         padding: '20px 20px 40px',
         '@media only screen and (max-width: 740px)': {
             flexGrow: 0,
             maxWidth: '100%',
             flexBasis: '50%',
-            height: '50%',
+            height: '60%',
         }
     }
 })

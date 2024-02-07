@@ -39,7 +39,7 @@ const useStyles = makeStyles(() => ({
     },
     main1: {
         height: '100vh',
-        overflowY: 'scroll',
+        // overflowY: 'scroll',
         padding: 20,
     },
     topSection: {

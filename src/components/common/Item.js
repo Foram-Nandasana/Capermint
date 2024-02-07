@@ -28,9 +28,11 @@ const useStyles = makeStyles(() => ({
   },
   textDes: {
     fontSize: 'clamp(15px, 1vw , 40px)',
+    padding: '0px 30px'
   },
   textPrice: {
     fontSize: 'clamp(20px, 1.5vw , 40px)',
+    padding: '0px 30px'
   },
   textButton: {
     fontSize: 'clamp(10px, 1.5vw , 30px)',
@@ -89,7 +91,7 @@ export const Item = ({ }) => {
                   display: 'block',
                   maxWidth: '90vw',
                   overflow: 'hidden',
-                  width: '100%',
+                  width: '100vw',
                 }}
                 src={selectedItem.img[index]}
                 alt={step.label}
