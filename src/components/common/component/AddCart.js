@@ -165,7 +165,8 @@ export const AddCart = () => {
               </Typo>
               <div className={classes.cardArea}>
                 <Typo variant="price">
-                  {product.price}
+                ₹{product.price * (qty[product.id] || 1)}
+                  {/* {product.price} */}
                 </Typo>
                 <div className={classes.counterContainer}>
               <div className={classes.counterButtons}>
@@ -177,7 +178,7 @@ export const AddCart = () => {
               </div>
             </div>
                 <button className={classes.button} >Buy Now</button>
-                <button className={classes.button} onClick={() => deleteUser(product.id)}  >Delete</button>
+                <button className={classes.button} onClick={() => deleteUser(id)}  >Delete</button>
               </div>
               
             </div>

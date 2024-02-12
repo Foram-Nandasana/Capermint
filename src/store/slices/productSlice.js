@@ -14,6 +14,9 @@ const productSlice = createSlice({
                 console.log("Product is alreay there");
             }
         },
+        login(state, action){
+            
+        },
         buyNow(state, action) { },
         removeUser(state, action) {
             state.splice(action.payload, 1)

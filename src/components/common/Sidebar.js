@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState , useEffect} from 'react';
 import {
     FaUserAlt,
     FaCommentAlt,
@@ -105,14 +105,17 @@ export const Sidebar = ({ children }) => {
     const classes = useStyles();
     const [isOpen, setIsOpen] = useState(false);
     const toggle = () => setIsOpen(!isOpen);
+    // const admin = true
+
+
     const menuItem = [
         {
-            path: "/",
+            path: "/Home",
             name: "Home",
             icon: <FaHome />
         },
         {
-            path: "/Product",
+            path: "/",
             name: "Product",
             icon: <FaShoppingBag />
         },
@@ -121,16 +124,17 @@ export const Sidebar = ({ children }) => {
             name: "Cart",
             icon: <FaShoppingCart />
         },
-        {
-            path: "/About",
-            name: "About",
-            icon: <FaUserAlt />
-        },
-        {
-            path: "/Contact",
-            name: "Contact",
-            icon: <FaCommentAlt />
-        },
+        // {
+        //     path: "/Admin",
+        //     name: "Admin",
+        //     icon: <FaUserAlt />
+        // },
+        // {
+        //     path: "/Contact",
+        //     name: "Contact",
+        //     icon: <FaCommentAlt />
+        // },
+
         {
             path: "/Login",
             name: "Login",
@@ -142,6 +146,21 @@ export const Sidebar = ({ children }) => {
             icon: <FaLock />
         }
     ]
+    let login = JSON.parse(localStorage.getItem('Login'));
+    console.log(login, "Admin");
+
+    if (login?.user === "Admin"){
+        // if (admin === true)
+        // {
+        menuItem.push ({
+            path: "/Admin",
+            name: "Admin",
+            icon: <FaUserAlt />
+        },)
+        console.log("Adminlogin")
+    // }
+    }
+   
     return (
         <div className={classes.dashboardContainer}>
             <div className={classes.sideBar} >

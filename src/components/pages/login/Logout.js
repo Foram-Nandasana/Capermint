@@ -15,7 +15,8 @@ export const Logout = () => {
   const classes = useStyles();
   const logout = () => {
     localStorage.removeItem('Login');
-    navigate('/Login')
+    navigate('/Login');
+    window.location.reload();
   }
   const navigate = useNavigate();
 

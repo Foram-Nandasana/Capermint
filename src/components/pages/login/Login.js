@@ -30,7 +30,8 @@ export const Login = () => {
     }
     const login = (data) => {
         localStorage.setItem('Login', JSON.stringify(data));
-        navigate('/')
+        navigate('/');
+        window.location.reload();
     }
 
     const navigate = useNavigate();

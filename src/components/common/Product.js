@@ -1,5 +1,6 @@
 // import React from 'react'
-import Data from './Data.json'
+import { useState, useEffect } from 'react';
+// import Data from './Data.json'
 // import { Button } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import './Font.css';
@@ -13,10 +14,8 @@ import * as React from 'react';
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
 import Slide from '@mui/material/Slide';
+import axios from 'axios';
 
 const useStyles = makeStyles(() => ({
     mainContain: {
@@ -67,7 +66,7 @@ const useStyles = makeStyles(() => ({
         padding: '16px',
         backgroundColor: '#f1f1f1',
         width: '50vw'
-      },
+    },
 }));
 
 
@@ -77,9 +76,16 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 
 export const Product = () => {
 
-
     const [open, setOpen] = React.useState(false);
 
+    const [formData, setFormData] = useState({
+        title: '',
+        des: '',
+        price: '',
+        img: '',
+    });
+
+    const [product, setProduct] = useState([]);
     const handleClickOpen = () => {
         setOpen(true);
     };
@@ -89,21 +95,52 @@ export const Product = () => {
     };
 
 
-
+    const fetchData = () => {
+        axios.get("https://65c4a496dae2304e92e301ac.mockapi.io/p/Product")
+            .then((response) => {
+                setProduct(response.data);
+            })
+            .catch((error) => {
+                console.error('Error fetching products:', error);
+            });
+    };
+console.log(product,"product")
+    useEffect(() => {
+        fetchData();
+    }, []);
 
     const dispatch = useDispatch();
     const classes = useStyles();
     const navigate = useNavigate();
-
 
     const addCard = (value) => {
         console.log(value, "product");
         dispatch(addToCard(value));
     };
 
-    const handleForm = () => {
-        navigate(`/ProductForm`)
-    }
+    // const handleInputChange = (e) => {
+    //     setFormData((prevData) => ({
+    //         ...prevData,
+    //         [e.target.name]: e.target.value,
+    //     }));
+    // };
+
+
+    const handleAddProduct = () => {
+        axios.post("https://65c4a496dae2304e92e301ac.mockapi.io/p/Product", formData)
+            .then((response) => {
+                console.log(response.data);
+                fetchData(); // Fetch updated data after adding a new product
+                handleClose();
+            })
+            .catch((error) => {
+                console.error('Error adding product:', error);
+            });
+    };
+
+    // const handleForm = () => {
+    //     navigate(`/ProductForm`)
+    // }
 
     const handleCard = (data) => {
         navigate(`/Product/${data}`);
@@ -115,49 +152,9 @@ export const Product = () => {
                 <h2 className={classes.title} >Products</h2>
                 {/* <button className={classes.button} onClick={() => handleForm()}>Add Product</button> */}
 
-                <React.Fragment>
-                    <button className={classes.button} onClick={handleClickOpen}>Add Product</button>
-                    {/* <Button variant="outlined" onClick={handleClickOpen}>
-                        Slide in alert dialog
-                    </Button> */}
-                    <Dialog
-                        open={open}
-                        TransitionComponent={Transition}
-                        keepMounted
-                        onClose={handleClose}
-                        aria-describedby="alert-dialog-slide-description"
-                    >
-                        <form>
-                            <div className={classes.container1}>
-                                <label for="pname"><b>Product Name</b></label>
-                                <input type="text"
-                                placeholder="Enter Product Name"
-                                    name="pname"
-                                    required
-                                />
-                                <label for="description"><b>Product Description</b></label>
-                                <input type="text"
-                                placeholder="Enter Product Description"
-                                    name="description"
-                                    required
-                                />
-                                <label for="price"><b>Product Price</b></label>
-                                <input type="text"
-                                placeholder="Enter Product Price"
-                                    name="price"
-                                    required
-                                />
-                            </div>
-                        </form>
-                        <DialogActions>
-                            <Button onClick={handleClose}>Disagree</Button>
-                            <Button onClick={handleClose}>Agree</Button>
-                        </DialogActions>
-                    </Dialog>
-                </React.Fragment>
 
                 <div className={classes.Container}>
-                    {Data.map((result, index) => (
+                    {product.map((result, index) => (
                         <Card variant="card" className={classes.card} key={index} >
                             <div onClick={() => handleCard(result.id)}>
                                 <img src={result.img[0]} alt="abc" className={classes.CardMedia} />
@@ -170,19 +167,14 @@ export const Product = () => {
                             </div>
                             <div className={classes.cardArea}>
                                 <Typo variant="price">
-                                    {result.price}
+                                    ₹ {result.price}
                                 </Typo>
                                 <Button className={classes.textButton} variant="outlined" size="small" onClick={() => addCard(result)}>Add to Card</Button>
                             </div>
                         </Card>
                     ))}
                 </div>
-
-
             </div>
-
-
-
         </div>
     )
 }

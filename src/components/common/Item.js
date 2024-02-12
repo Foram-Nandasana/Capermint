@@ -11,7 +11,6 @@ import Card from './component/Card';
 
 const useStyles = makeStyles(() => ({
 
-
   cardArea: {
     display: 'grid',
     columnGap: '15px',
