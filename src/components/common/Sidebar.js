@@ -1,51 +1,47 @@
-import React, { useState } from 'react';
+import React, { useState , useEffect} from 'react';
 import {
     FaUserAlt,
     FaCommentAlt,
     FaLock,
     FaHome,
     FaUnlock,
-    FaShoppingBag
+    FaShoppingBag,
+    FaShoppingCart
 } from "react-icons/fa";
 import { NavLink } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(() => ({
 
-"*": {
-    margin: 0,
-    padding: 0,
-    textDecoration: "none",
-},
-
+    "*": {
+        margin: 0,
+        padding: 0,
+        textDecoration: "none",
+    },
     dashboardContainer: {
         display: 'flex',
-      
     },
-
-   
     sideBar: {
         background: '#252525e2',
         color: '#fff',
         height: '100vh',
-       
+
         transition: 'all 0.5s',
         padding: 15,
         textAlign: 'center',
-     
     },
     menuBtn: {
         cursor: 'pointer',
         display: 'block',
     },
-
     mainContent: {
         flexGrow: 1,
-        height: '100vh',
-        overflowY : 'scroll',
-        // padding: 20,
     },
-
+    main1: {
+        height: '100vh',
+        // overflowY: 'scroll',
+        padding: 20,
+    },
     topSection: {
         display: 'flex',
         alignItems: 'center',
@@ -54,7 +50,6 @@ const useStyles = makeStyles(() => ({
     logo: {
         fontSize: 30,
     },
-
     link: {
         display: 'flex',
         color: '#fff',
@@ -76,6 +71,7 @@ const useStyles = makeStyles(() => ({
     },
     linkText: {
         fontSize: 25,
+        textDecoration: 'none',
     },
     logout: {
         position: 'absolute',
@@ -107,30 +103,38 @@ const useStyles = makeStyles(() => ({
 export const Sidebar = ({ children }) => {
 
     const classes = useStyles();
-
     const [isOpen, setIsOpen] = useState(false);
     const toggle = () => setIsOpen(!isOpen);
+    // const admin = true
+
+
     const menuItem = [
         {
-            path: "/",
+            path: "/Home",
             name: "Home",
             icon: <FaHome />
         },
         {
-            path: "/Product",
+            path: "/",
             name: "Product",
             icon: <FaShoppingBag />
         },
         {
-            path: "/About",
-            name: "About",
-            icon: <FaUserAlt />
+            path: "/AddCart/:id",
+            name: "Cart",
+            icon: <FaShoppingCart />
         },
-        {
-            path: "/Contact",
-            name: "Contact",
-            icon: <FaCommentAlt />
-        },
+        // {
+        //     path: "/Admin",
+        //     name: "Admin",
+        //     icon: <FaUserAlt />
+        // },
+        // {
+        //     path: "/Contact",
+        //     name: "Contact",
+        //     icon: <FaCommentAlt />
+        // },
+
         {
             path: "/Login",
             name: "Login",
@@ -142,27 +146,41 @@ export const Sidebar = ({ children }) => {
             icon: <FaLock />
         }
     ]
+    let login = JSON.parse(localStorage.getItem('Login'));
+    console.log(login, "Admin");
+
+    if (login?.user === "Admin"){
+        // if (admin === true)
+        // {
+        menuItem.push ({
+            path: "/Admin",
+            name: "Admin",
+            icon: <FaUserAlt />
+        },)
+        console.log("Adminlogin")
+    // }
+    }
+   
     return (
         <div className={classes.dashboardContainer}>
-            <div  className={classes.sideBar} >
+            <div className={classes.sideBar} >
                 <div className={classes.top_section}>
                     <div style={{ marginLeft: isOpen ? "4px" : "-5px" }} className={classes.menuBtn}>
-                        <img src="image/Capermint.png" alt="Logo" width={50} onClick={toggle} />
+                        <img src="/image/Capermint.png" alt="Logo" width={50} onClick={toggle} />
                         <h1 style={{ display: isOpen ? "block" : "none" }} className={classes.logo}>Capermint</h1>
                     </div>
-
                 </div>
                 {
                     menuItem.map((item, index) => (
                         <NavLink to={item.path} key={index} className={classes.link} activeclassName={classes.active}>
                             <div className={classes.icon}>{item.icon}</div>
-                            <div style={{ display: isOpen ? "flex" : "none" }} className={classes.linkText}>{item.name}</div>
+                            <div style={{ display: isOpen ? "flex" : "none"} } className={classes.linkText}>{item.name}</div>
                         </NavLink>
                     ))
                 }
             </div>
             <div className={classes.mainContent}>
-                <main>{children}</main>
+                <main className={classes.main1}>{children}</main>
             </div>
         </div>
     )

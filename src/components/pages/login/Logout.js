@@ -8,18 +8,16 @@ const useStyles = makeStyles({
     padding: '16px',
     backgroundColor: '#f1f1f1'
   },
-
 });
 
 export const Logout = () => {
 
   const classes = useStyles();
-
   const logout = () => {
     localStorage.removeItem('Login');
-    navigate('/Login')
+    navigate('/Login');
+    window.location.reload();
   }
-
   const navigate = useNavigate();
 
   return (
@@ -27,6 +25,5 @@ export const Logout = () => {
       <h3>Do you want to Logout ? </h3>
       <button type="submit" onClick={logout} >Logout</button>
     </div>
-
   )
 }

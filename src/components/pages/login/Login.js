@@ -4,51 +4,17 @@ import { useNavigate } from "react-router-dom";
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
-   
     container1: {
-      // display: 'flex',
       flexWrap: 'wrap',
       padding: '16px',
       backgroundColor: '#f1f1f1',
       width: '450px',
       alignItems: 'center',
-      // justifyContent: 'center',
-      // border: 'none',
-      // marginLeft: '40%',
-      // flex: 1,
-    //   [theme.breakpoints.down('sm')]: {
-    //     marginLeft: '180px',
-    //   },
-    //   [theme.breakpoints.down('md')]: {
-    //     marginLeft: '200px',
-    //   },
     },
-    // psw: {
-    //   float: 'right',
-    //   paddingTop: '16px',
-    // },
-    // main: {
-    //   display: 'flex',
-    //   justifyContent: 'center',
-    //   alignItems: 'center',
-    //   minHeight: '50vh',
-    //   // width: '70%',
-    // },
-    // '@media only screen and (max-width: 1000px)': {
-    //     container1:{
-    //         marginLeft: '30%',
-    //     },
-    // },
-    // '@media only screen and (max-width: 800px)': {
-    //     container1:{
-    //         marginLeft: '20%',
-    //     },
-    // },
   }));
 export const Login = () => {
 
     const classes = useStyles();
-
     const [uid, setUid] = useState('');
     const [pass, setPsw] = useState('');
 
@@ -56,21 +22,19 @@ export const Login = () => {
         user: uid,
         password: pass,
     };
-
     const handleSubmit = (e) => {
         e.preventDefault()
         console.log([uid, pass])
         login(obj);
         console.log([obj])
     }
-
     const login = (data) => {
         localStorage.setItem('Login', JSON.stringify(data));
-        navigate('/')
+        navigate('/');
+        window.location.reload();
     }
 
     const navigate = useNavigate();
-
     return (
         <main>
         <form onSubmit={handleSubmit}>
@@ -93,11 +57,6 @@ export const Login = () => {
                 />
                 <button type="submit"  >Login</button>
             </div>
-            {/* <div className="container" >
-                    <button type="button" className="cancelbtn">Cancel</button>
-                    {/* <span className="psw">Forgot <a href="#">password?</a></span> }
-                </div> */}
-
         </form>
         </main>
     )
