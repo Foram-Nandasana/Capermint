@@ -1,7 +1,4 @@
-// import React from 'react'
 import { useState, useEffect } from 'react';
-// import Data from './Data.json'
-// import { Button } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import './Font.css';
 import { useNavigate } from 'react-router-dom'
@@ -9,13 +6,11 @@ import Typo from './component/Typo';
 import Card from './component/Card';
 import { useDispatch } from 'react-redux';
 import { addToCard } from '../../store/slices/productSlice';
-
 import * as React from 'react';
 import Button from '@mui/material/Button';
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
 import Slide from '@mui/material/Slide';
 import axios from 'axios';
+import { Loader } from './component/Loader';
 
 const useStyles = makeStyles(() => ({
     mainContain: {
@@ -69,30 +64,22 @@ const useStyles = makeStyles(() => ({
     },
 }));
 
-
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
 });
 
 export const Product = () => {
 
-    const [open, setOpen] = React.useState(false);
-
-    const [formData, setFormData] = useState({
-        title: '',
-        des: '',
-        price: '',
-        img: '',
-    });
 
     const [product, setProduct] = useState([]);
-    const handleClickOpen = () => {
-        setOpen(true);
-    };
+    const [loading, setLoading] = useState(false);
 
-    const handleClose = () => {
-        setOpen(false);
-    };
+    useEffect(() => {
+        setLoading(true)
+        setTimeout(()=>{
+            setLoading(false)
+        },2000)
+    },[])
 
 
     const fetchData = () => {
@@ -118,41 +105,16 @@ console.log(product,"product")
         dispatch(addToCard(value));
     };
 
-    // const handleInputChange = (e) => {
-    //     setFormData((prevData) => ({
-    //         ...prevData,
-    //         [e.target.name]: e.target.value,
-    //     }));
-    // };
-
-
-    const handleAddProduct = () => {
-        axios.post("https://65c4a496dae2304e92e301ac.mockapi.io/p/Product", formData)
-            .then((response) => {
-                console.log(response.data);
-                fetchData(); // Fetch updated data after adding a new product
-                handleClose();
-            })
-            .catch((error) => {
-                console.error('Error adding product:', error);
-            });
-    };
-
-    // const handleForm = () => {
-    //     navigate(`/ProductForm`)
-    // }
-
     const handleCard = (data) => {
         navigate(`/Product/${data}`);
     }
 
-    return (
+    return (<>
+        {loading ? <Loader /> : (
         <div className={classes.mainContain}>
             <div className='ObjectSansRegular' >
                 <h2 className={classes.title} >Products</h2>
-                {/* <button className={classes.button} onClick={() => handleForm()}>Add Product</button> */}
-
-
+{/* <Loader/> */}
                 <div className={classes.Container}>
                     {product.map((result, index) => (
                         <Card variant="card" className={classes.card} key={index} >
@@ -176,5 +138,6 @@ console.log(product,"product")
                 </div>
             </div>
         </div>
+        )}</>
     )
 }

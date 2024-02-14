@@ -3,13 +3,13 @@ import { makeStyles } from '@material-ui/core/styles';
 import Typo from '../common/component/Typo';
 import Card from '../common/component/Card';
 import { useNavigate } from 'react-router-dom'
-import { useDispatch } from 'react-redux';
 import { FormDialog } from '../common/component/FormDialog';
 import * as React from 'react';
 import Button from '@mui/material/Button';
 import Slide from '@mui/material/Slide';
 import axios from 'axios';
 import { EditDialog } from '../common/component/EditDialog';
+import { Loader } from '../common/component/Loader';
 
 const useStyles = makeStyles(() => ({
   mainContain: {
@@ -75,6 +75,14 @@ export const Admin = () => {
   const [isEditDialogOpen, setIsEditDialogOpen] = useState(false);
   const [product, setProduct] = useState([]);
   const [editProductData, setEditProductData] = useState(null);
+  const [loading, setLoading] = useState(false);
+
+    useEffect(() => {
+        setLoading(true)
+        setTimeout(()=>{
+            setLoading(false)
+        },3000)
+    },[])
 
   const handleCard = (data) => {
     navigate(`/Product/${data}`);
@@ -88,8 +96,10 @@ export const Admin = () => {
     axios.delete(`https://65c4a496dae2304e92e301ac.mockapi.io/p/Product/${id}`)
       .then((response) => {
         console.log(response);
+      
         // Update the product list after deletion
-        setProduct((prevProducts) => prevProducts.filter((product) => product.id !== id));
+        window.location.reload()
+        //setProduct((prevProducts) => prevProducts.filter((product) => product.id !== id));
       })
       .catch((error) => {
         console.error('Error deleting product:', error);
@@ -104,6 +114,8 @@ export const Admin = () => {
   }, []);
 
   return (
+    <>
+    {loading ? <Loader /> : (
     <div className={classes.mainContain}>
       <div className='ObjectSansRegular' >
         <h2 className={classes.title} >Products</h2>
@@ -141,6 +153,7 @@ export const Admin = () => {
 
         </div>
       </div>
-    </div>
+    </div>)}
+    </>
   )
 }

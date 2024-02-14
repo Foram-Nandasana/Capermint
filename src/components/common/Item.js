@@ -17,6 +17,9 @@ const useStyles = makeStyles(() => ({
     gridTemplateColumns: 'auto auto',
     padding: '20px',
     fontSize: '30px',
+    '@media only screen and (max-width: 550px)': {
+     padding: '10px'
+    },
   },
 
   title: {
@@ -52,6 +55,7 @@ const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 export const Item = ({ }) => {
   const classes = useStyles();
   const theme = useTheme();
+  // const [product, setProduct] = useState([]);
   const [activeStep, setActiveStep] = React.useState(0);
 
   const handleStepChange = (step) => {
@@ -61,8 +65,7 @@ export const Item = ({ }) => {
   const { id } = useParams();
   const ids = Number(id)
   const selectedItem = data.find(item => item.id === ids);
-
-
+  
   return (
     <Card variant="singleCard" className={classes.card}>
 

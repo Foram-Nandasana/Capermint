@@ -46,6 +46,7 @@ export const FormDialog = () => {
         axios.post("https://65c4a496dae2304e92e301ac.mockapi.io/p/Product", formData)
             .then((response) => {
                 console.log(response.data);
+                window.location.reload()
                 fetchData(); // Fetch updated data after adding a new product
                 handleClose();
             })

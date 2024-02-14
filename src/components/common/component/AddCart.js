@@ -5,6 +5,7 @@ import { makeStyles } from '@material-ui/core';
 import Typo from './Typo';
 import { removeUser } from '../../../store/slices/productSlice';
 import { FaPlus, FaMinus } from "react-icons/fa";
+import { useNavigate } from 'react-router-dom';
 
 const useStyles = makeStyles(() => ({
   mainContainer: {
@@ -109,17 +110,21 @@ const useStyles = makeStyles(() => ({
 export const AddCart = () => {
 
   const dispatch = useDispatch();
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const classes = useStyles();
   const data = useSelector((state) => state.product);
   // const [counter, setCounter] = useState( data.map (product => ({...product, qty:1})));
-  console.log(data, 'hyyy')
+  // console.log(data, 'hyyy')
   const [qty, setQty] = useState({});
-
   const deleteUser = (id) => {
     dispatch(removeUser(id));
   };
 
+  const BuyNow = (value) => {
+    // console.log(value, "Buy");
+    // dispatch(buyNow(value));
+    navigate(`/BuyNow/${value.id}`);
+}
 
   const handleIncrement = (id) => {
     setQty(prevState => ({
@@ -136,19 +141,6 @@ export const AddCart = () => {
       }));
     }
   };
-
-  // const handleCard = (product) => {
-  //   navigate(`/product/${product.id}`, { state: { quantity: qty[product.id] || 1 } });
-  // };
-
-  // const handleIncrement = () => {
-  //   setCounter((prevCounter) => prevCounter + 1);
-  // };
-  // const handleDecrement = () => {
-  //   if (counter > 1) {
-  //     setCounter((prevCounter) => prevCounter - 1);
-  //   }
-  // };
 
   return (
     <div className={classes.containerCard}>
@@ -177,7 +169,9 @@ export const AddCart = () => {
 
               </div>
             </div>
-                <button className={classes.button} >Buy Now</button>
+            {/* <BuyNow /> */}
+    
+                <button className={classes.button} onClick={() => BuyNow(product)} >Buy Now</button>
                 <button className={classes.button} onClick={() => deleteUser(id)}  >Delete</button>
               </div>
               
@@ -186,6 +180,7 @@ export const AddCart = () => {
           </div>
         </Card>
       ))}
+     
     </div>
   )
 }

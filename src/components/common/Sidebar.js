@@ -6,7 +6,7 @@ import {
     FaHome,
     FaUnlock,
     FaShoppingBag,
-    FaShoppingCart
+    FaShoppingCart,FaBoxOpen
 } from "react-icons/fa";
 import { NavLink } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
@@ -105,17 +105,16 @@ export const Sidebar = ({ children }) => {
     const classes = useStyles();
     const [isOpen, setIsOpen] = useState(false);
     const toggle = () => setIsOpen(!isOpen);
-    // const admin = true
-
+  
 
     const menuItem = [
         {
-            path: "/Home",
+            path: "/",
             name: "Home",
             icon: <FaHome />
         },
         {
-            path: "/",
+            path: "/Product",
             name: "Product",
             icon: <FaShoppingBag />
         },
@@ -136,12 +135,17 @@ export const Sidebar = ({ children }) => {
         // },
 
         {
+            path: "Order",
+            name: "Order",
+            icon: <FaBoxOpen />
+        },
+        {
             path: "/Login",
             name: "Login",
             icon: <FaUnlock />
         },
         {
-            path: "/Logout",
+            path: "Logout",
             name: "Logout",
             icon: <FaLock />
         }
@@ -149,7 +153,7 @@ export const Sidebar = ({ children }) => {
     let login = JSON.parse(localStorage.getItem('Login'));
     console.log(login, "Admin");
 
-    if (login?.user === "Admin"){
+    if (login?.user === "Admin" && login?.password === "1234"){
         // if (admin === true)
         // {
         menuItem.push ({

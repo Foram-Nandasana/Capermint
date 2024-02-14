@@ -17,7 +17,10 @@ const productSlice = createSlice({
         login(state, action){
             
         },
-        buyNow(state, action) { },
+        buyNow(state, action) {
+     
+
+         },
         removeUser(state, action) {
             state.splice(action.payload, 1)
         },
