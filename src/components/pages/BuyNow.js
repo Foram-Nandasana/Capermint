@@ -2,13 +2,14 @@ import React from 'react'
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { useSelector } from 'react-redux';
 import Card from '../common/component/Card';
 import { useParams } from 'react-router-dom'
 import { makeStyles } from '@material-ui/core';
 const useStyles = makeStyles(() => ({
   mainContain: {
     height: '100vh',
-    overflowY: 'scroll',
+    // overflowY: 'scroll',
     padding: '20px',
   },
   card: {
@@ -51,8 +52,14 @@ const useStyles = makeStyles(() => ({
 export const BuyNow = ({ }) => {
   const classes = useStyles();
   const navigate = useNavigate();
+  const [DelivedDate, setDelivedDate] = useState(null);
+  const [textarea, setTextarea] = useState();
   const { id } = useParams();
   const [value, setValue] = useState([]);
+  const cartData = useSelector((state) => state.product);
+  const selectedQty = cartData.find(item => item.id === id);
+
+
   useEffect(() => {
     axios
       .get(`https://65c4a496dae2304e92e301ac.mockapi.io/p/Product/${id}`)
@@ -62,10 +69,6 @@ export const BuyNow = ({ }) => {
       .catch((err) => console.log(err));
   }, []);
 
-
-  const [DelivedDate, setDelivedDate] = useState(null);
-  // const [address, setAddress] = useState('')
-
   useEffect(() => {
     const currentDate = new Date();
     const sevenDaysLater = new Date(currentDate);
@@ -74,26 +77,26 @@ export const BuyNow = ({ }) => {
     setDelivedDate(formattedDate);
   }, []);
 
-  const [textarea, setTextarea] = useState();
-
   const buyNow = {
     name: value.title,
-    price: value.price,
+    price:(value.price) * (selectedQty.quantity || 1),
     img: value.img,
-    quantity: 1,
+    quantity: selectedQty.quantity,
     deliveredDate: DelivedDate,
     address: '',
   };
-
+  // console.log(cartData.title, "qtyyy")
   const handleChange = (event) => {
     setTextarea(event.target.value)
   }
 
   const handleBuyNow = () => {
+
     const updatedBuyNow = {
       ...buyNow,
       address: textarea,
     };
+
     // console.log(buyNow, 'buyNow')
     // console.log(textarea, 'text')
     console.log(updatedBuyNow, 'Buy Now Data')
@@ -108,51 +111,34 @@ export const BuyNow = ({ }) => {
         navigate("/Order");
   }
 
-//   const handleAddProduct = () => {
-//     axios.post("https://65c4a496dae2304e92e301ac.mockapi.io/p/Product", formData)
-//         .then((response) => {
-//             console.log(response.data);
-//             window.location.reload()
-//             fetchData(); // Fetch updated data after adding a new product
-//             handleClose();
-//         })
-//         .catch((error) => {
-//             console.error('Error adding product:', error);
-//         });
-// };
-
   return (
     <>
       <div className={classes.mainContain}>
-        <Card variant="buyNowCard"  >
-          <img src={value.img && value.img[0]} alt="abc" className={classes.CardMedia} />
-          <div className={classes.title}>
-            <h5>Name</h5>
-            {value.title}
-            <h5>Price</h5>
-            {value.price}
-            <h5>Quentity</h5>
-            1
-            <h5>Address</h5>
-            {/* <textarea
-              id="address"
-              onChange={(e) => handleChange(e)}
-              value={address}
-              name="address"
-              rows="2"
-              cols="30" /> */}
-            <form>
-              <textarea value={textarea} onChange={handleChange} />
-            </form>
+        {selectedQty ? (
+          <Card variant="buyNowCard" key={id} >
+            <img src={value.img && value.img[0]} alt="abc" className={classes.CardMedia} />
+            <div className={classes.title}>
+              <h5>Name</h5>
+              {value.title}
+              <h5>Price</h5>
+              {value.price * (selectedQty.quantity || 1)}
+              {/* {value.price} */}
+              <h5>Quentity</h5>
+              {selectedQty.quantity}
+              <h5>Address</h5>
+              <form>
+                <textarea value={textarea} onChange={handleChange} />
+              </form>
+              <h5>Delived by</h5>
+              {DelivedDate}
+            </div>
+            {/* <button type='submit' className={classes.button} onClick={() => handleBuyNow(value)}>Buy Now</button> */}
+            <button type='submit' className={classes.button} onClick={handleBuyNow}>Buy Now</button>
+          </Card>
+        ) : (
+          <p>Data not found</p>
 
-            <h5>Delived by</h5>
-            {DelivedDate}
-
-          </div>
-          {/* <button type='submit' className={classes.button} onClick={() => handleBuyNow(value)}>Buy Now</button> */}
-          <button type='submit' className={classes.button} onClick={handleBuyNow}>Buy Now</button>
-        </Card>
-
+        )}
       </div>
 
     </>

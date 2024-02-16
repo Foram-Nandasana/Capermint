@@ -37,11 +37,7 @@ const useStyles = makeStyles(() => ({
     mainContent: {
         flexGrow: 1,
     },
-    main1: {
-        height: '100vh',
-        // overflowY: 'scroll',
-        padding: 20,
-    },
+   
     topSection: {
         display: 'flex',
         alignItems: 'center',
@@ -184,7 +180,7 @@ export const Sidebar = ({ children }) => {
                 }
             </div>
             <div className={classes.mainContent}>
-                <main className={classes.main1}>{children}</main>
+                <main >{children}</main>
             </div>
         </div>
     )
