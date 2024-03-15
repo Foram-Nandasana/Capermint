@@ -14,10 +14,23 @@ const productSlice = createSlice({
                 console.log("Product is alreay there");
             }
         },
+
+        updateQuantity: (state, action) => {
+            const { id, quantity } = action.payload;
+            const productToUpdate = state.find((product) => product.id === id);
+      
+            if (productToUpdate) {
+              productToUpdate.quantity = quantity;
+              console.log(action.payload, "qty")
+            }
+          },
         login(state, action){
             
         },
-        buyNow(state, action) { },
+        buyNow(state, action) {
+     
+
+         },
         removeUser(state, action) {
             state.splice(action.payload, 1)
         },
@@ -25,6 +38,7 @@ const productSlice = createSlice({
 });
 
 console.log(productSlice.actions);
-export const { addToCard, buyNow, removeUser } = productSlice.actions;
+export const { addToCard, buyNow, removeUser, updateQuantity } = productSlice.actions;
+
 export default productSlice.reducer;
 

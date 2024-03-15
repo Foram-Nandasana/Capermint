@@ -19,7 +19,6 @@ export const Logout = () => {
     window.location.reload();
   }
   const navigate = useNavigate();
-
   return (
     <div className={classes.container1}>
       <h3>Do you want to Logout ? </h3>

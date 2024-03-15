@@ -6,7 +6,7 @@ import {
     FaHome,
     FaUnlock,
     FaShoppingBag,
-    FaShoppingCart
+    FaShoppingCart,FaBoxOpen
 } from "react-icons/fa";
 import { NavLink } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
@@ -37,11 +37,7 @@ const useStyles = makeStyles(() => ({
     mainContent: {
         flexGrow: 1,
     },
-    main1: {
-        height: '100vh',
-        // overflowY: 'scroll',
-        padding: 20,
-    },
+   
     topSection: {
         display: 'flex',
         alignItems: 'center',
@@ -105,22 +101,21 @@ export const Sidebar = ({ children }) => {
     const classes = useStyles();
     const [isOpen, setIsOpen] = useState(false);
     const toggle = () => setIsOpen(!isOpen);
-    // const admin = true
-
+  
 
     const menuItem = [
         {
-            path: "/Home",
+            path: "/",
             name: "Home",
             icon: <FaHome />
         },
         {
-            path: "/",
+            path: "/Product",
             name: "Product",
             icon: <FaShoppingBag />
         },
         {
-            path: "/AddCart/:id",
+            path: "/AddCart",
             name: "Cart",
             icon: <FaShoppingCart />
         },
@@ -136,6 +131,11 @@ export const Sidebar = ({ children }) => {
         // },
 
         {
+            path: "/Order",
+            name: "Order",
+            icon: <FaBoxOpen />
+        },
+        {
             path: "/Login",
             name: "Login",
             icon: <FaUnlock />
@@ -149,7 +149,7 @@ export const Sidebar = ({ children }) => {
     let login = JSON.parse(localStorage.getItem('Login'));
     console.log(login, "Admin");
 
-    if (login?.user === "Admin"){
+    if (login?.user === "Admin" && login?.password === "1234"){
         // if (admin === true)
         // {
         menuItem.push ({
@@ -180,7 +180,7 @@ export const Sidebar = ({ children }) => {
                 }
             </div>
             <div className={classes.mainContent}>
-                <main className={classes.main1}>{children}</main>
+                <main >{children}</main>
             </div>
         </div>
     )

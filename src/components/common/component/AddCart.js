@@ -5,10 +5,17 @@ import { makeStyles } from '@material-ui/core';
 import Typo from './Typo';
 import { removeUser } from '../../../store/slices/productSlice';
 import { FaPlus, FaMinus } from "react-icons/fa";
+import { useNavigate } from 'react-router-dom';
+import { updateQuantity } from '../../../store/slices/productSlice';
 
 const useStyles = makeStyles(() => ({
   mainContainer: {
-    display: 'flex',
+    // display: 'flex',
+    display: 'grid',
+    gridTemplateColumns: 'auto auto auto',
+    gap: '10px',
+    textAlign: 'center',
+    alignItems: 'center',
     '@media only screen and (max-width: 740px)': {
       flexWrap: 'wrap',
       display: 'grid',
@@ -18,7 +25,7 @@ const useStyles = makeStyles(() => ({
   containerCard: {
     height: '100vh',
     overflowY: 'scroll',
-    padding: '20px',
+    padding: '10px',
   },
   cardArea: {
     display: 'grid',
@@ -82,8 +89,8 @@ const useStyles = makeStyles(() => ({
   counterContainer: {
     // display: 'flex',
     // flexDirection: 'column',
-    display:'grid',
-    gridTemplateColumns: 'auto auto auto',
+    display: 'grid',
+    gridTemplateRows: 'auto auto auto',
     alignItems: 'center',
     marginTop: '10px',
   },
@@ -105,27 +112,33 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-
 export const AddCart = () => {
+  // const [value, setValue] = useState(initialData);
 
   const dispatch = useDispatch();
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const classes = useStyles();
   const data = useSelector((state) => state.product);
   // const [counter, setCounter] = useState( data.map (product => ({...product, qty:1})));
   console.log(data, 'hyyy')
   const [qty, setQty] = useState({});
+  // const deleteUser = (id) => {
+  //   dispatch(removeUser(id));
+  // };
 
-  const deleteUser = (id) => {
-    dispatch(removeUser(id));
-  };
-
+  const BuyNow = (value) => {
+    // console.log(value, "Buyyyyyy");
+    // dispatch(buyNow(value));
+    navigate(`/BuyNow/${value}`);
+  }
 
   const handleIncrement = (id) => {
     setQty(prevState => ({
       ...prevState,
       [id]: (prevState[id] || 0) + 1
     }));
+    dispatch(updateQuantity({ id, quantity: qty[id] + 1 }));
+    
   };
 
   const handleDecrement = (id) => {
@@ -134,21 +147,9 @@ export const AddCart = () => {
         ...prevState,
         [id]: prevState[id] - 1
       }));
+      dispatch(updateQuantity({ id, quantity: qty[id] - 1 }));
     }
   };
-
-  // const handleCard = (product) => {
-  //   navigate(`/product/${product.id}`, { state: { quantity: qty[product.id] || 1 } });
-  // };
-
-  // const handleIncrement = () => {
-  //   setCounter((prevCounter) => prevCounter + 1);
-  // };
-  // const handleDecrement = () => {
-  //   if (counter > 1) {
-  //     setCounter((prevCounter) => prevCounter - 1);
-  //   }
-  // };
 
   return (
     <div className={classes.containerCard}>
@@ -165,27 +166,29 @@ export const AddCart = () => {
               </Typo>
               <div className={classes.cardArea}>
                 <Typo variant="price">
-                ₹{product.price * (qty[product.id] || 1)}
-                  {/* {product.price} */}
+                ₹{product.price}
+                  {/* ₹{product.price * (qty[product.id] || 1)} */}
                 </Typo>
-                <div className={classes.counterContainer}>
+                <Typo variant="price">
+                  {/* {product.price} */}
+                  ₹{product.price * (qty[product.id] || 1)}
+                </Typo>
+              </div>
+            </div>
+            <div className={classes.counterContainer}>
               <div className={classes.counterButtons}>
-
                 <FaMinus className={classes.counterButton} onClick={() => handleDecrement(product.id)} />
                 <div className={classes.counterValue}>{qty[product.id] || 1}</div>
                 <FaPlus className={classes.counterButton} onClick={() => handleIncrement(product.id)} />
-
               </div>
+              <button className={classes.button} onClick={() => BuyNow(product.id)} >Buy Now</button>
+              <button className={classes.button} >Delete</button>
             </div>
-                <button className={classes.button} >Buy Now</button>
-                <button className={classes.button} onClick={() => deleteUser(id)}  >Delete</button>
-              </div>
-              
-            </div>
-            
+            {/* <BuyNow /> */}
           </div>
         </Card>
       ))}
+
     </div>
   )
 }

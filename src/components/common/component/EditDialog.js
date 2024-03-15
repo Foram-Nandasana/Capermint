@@ -31,7 +31,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 
 export const EditDialog = ({ open, close, editProductData }) => {
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const navigate = useNavigate();
   const classes = useStyles();
   const id  = editProductData.id;
@@ -52,14 +52,15 @@ export const EditDialog = ({ open, close, editProductData }) => {
   }, [editProductData]);
 
   const handleSubmit = (event) => {
-    event.preventDefault();
-    console.log(id, 'iddddd')
+    // event.preventDefault();
+    // console.log(id, 'id')
     axios
       .put(`https://65c4a496dae2304e92e301ac.mockapi.io/p/Product/${id}`,
         inputData
       )
       .then((res) => {
-        alert("Data Updated success!");
+        console.log("Data Updated success!");
+        window.location.reload()
         navigate("/product");
         close(false);
       });

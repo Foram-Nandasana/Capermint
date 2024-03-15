@@ -10,15 +10,24 @@ export const Protected = ({ Component }) => {
 
         if (!login) {
             navigate('/Login');
-        } else if ((login.user === "Admin" && login.password === "1234")) {
-            navigate('/');
-        } else if (!(login.user === "User" && login.password ==="123")){
+        } else if (!((login.user === "Admin" && login.password === "1234") || (login.user === "User" && login.password === "123"))) {
             navigate('/Login');
         }
+
+        // if (login) {
+        //     if ((login.user === "Admin" && login.password === "1234") || (login.user === "User" && login.password === "123")) {
+        //         navigate('/');
+        //     } else {
+        //         navigate('/Login');
+        //     }
+        // } else {
+        //     navigate('/Login');
+        // }
+
     }, []);
     return (
         <div>
             <Component />
-        </div>
+            </div>
     )
 }
