@@ -115,7 +115,7 @@ export const Sidebar = ({ children }) => {
             icon: <FaShoppingBag />
         },
         {
-            path: "/AddCart/:id",
+            path: "/AddCart",
             name: "Cart",
             icon: <FaShoppingCart />
         },
@@ -131,7 +131,7 @@ export const Sidebar = ({ children }) => {
         // },
 
         {
-            path: "Order",
+            path: "/Order",
             name: "Order",
             icon: <FaBoxOpen />
         },
@@ -141,7 +141,7 @@ export const Sidebar = ({ children }) => {
             icon: <FaUnlock />
         },
         {
-            path: "Logout",
+            path: "/Logout",
             name: "Logout",
             icon: <FaLock />
         }

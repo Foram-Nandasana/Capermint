@@ -2,10 +2,13 @@ import React from 'react'
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Card from '../common/component/Card';
 import { useParams } from 'react-router-dom'
 import { makeStyles } from '@material-ui/core';
+import { Loader } from '../common/component/Loader';
+import { removeUser } from '../../store/slices/productSlice';
+
 const useStyles = makeStyles(() => ({
   mainContain: {
     height: '100vh',
@@ -54,11 +57,19 @@ export const BuyNow = ({ }) => {
   const navigate = useNavigate();
   const [DelivedDate, setDelivedDate] = useState(null);
   const [textarea, setTextarea] = useState();
+  const dispatch = useDispatch();
   const { id } = useParams();
   const [value, setValue] = useState([]);
   const cartData = useSelector((state) => state.product);
   const selectedQty = cartData.find(item => item.id === id);
+  const [loading, setLoading] = useState(false);
 
+  useEffect(() => {
+      setLoading(true)
+      setTimeout(()=>{
+          setLoading(false)
+      },3000)
+  },[])
 
   useEffect(() => {
     axios
@@ -89,14 +100,12 @@ export const BuyNow = ({ }) => {
   const handleChange = (event) => {
     setTextarea(event.target.value)
   }
-
   const handleBuyNow = () => {
-
     const updatedBuyNow = {
       ...buyNow,
       address: textarea,
     };
-
+    dispatch(removeUser(cartData.filter(item => item.id === id)));
     // console.log(buyNow, 'buyNow')
     // console.log(textarea, 'text')
     console.log(updatedBuyNow, 'Buy Now Data')
@@ -113,6 +122,7 @@ export const BuyNow = ({ }) => {
 
   return (
     <>
+    {loading ? <Loader /> : (
       <div className={classes.mainContain}>
         {selectedQty ? (
           <Card variant="buyNowCard" key={id} >
@@ -137,10 +147,9 @@ export const BuyNow = ({ }) => {
           </Card>
         ) : (
           <p>Data not found</p>
-
         )}
       </div>
-
+    )}
     </>
   )
 }

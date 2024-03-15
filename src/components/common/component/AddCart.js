@@ -122,12 +122,12 @@ export const AddCart = () => {
   // const [counter, setCounter] = useState( data.map (product => ({...product, qty:1})));
   console.log(data, 'hyyy')
   const [qty, setQty] = useState({});
-  const deleteUser = (id) => {
-    dispatch(removeUser(id));
-  };
+  // const deleteUser = (id) => {
+  //   dispatch(removeUser(id));
+  // };
 
   const BuyNow = (value) => {
-    // console.log(value, "Buy");
+    // console.log(value, "Buyyyyyy");
     // dispatch(buyNow(value));
     navigate(`/BuyNow/${value}`);
   }
@@ -182,7 +182,7 @@ export const AddCart = () => {
                 <FaPlus className={classes.counterButton} onClick={() => handleIncrement(product.id)} />
               </div>
               <button className={classes.button} onClick={() => BuyNow(product.id)} >Buy Now</button>
-              <button className={classes.button} onClick={() => deleteUser(id)}  >Delete</button>
+              <button className={classes.button} >Delete</button>
             </div>
             {/* <BuyNow /> */}
           </div>

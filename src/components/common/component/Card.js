@@ -19,7 +19,7 @@ const useStyles = makeStyles({
             flexGrow: 0,
             maxWidth: '100%',
             flexBasis: '100%',
-        }
+        },
     },
     singleCard: {
         boxShadow: '0 4px 8px 0 rgba(0,0,0,0.2)',
@@ -32,7 +32,7 @@ const useStyles = makeStyles({
         boxShadow: '0 4px 8px 0 rgba(0,0,0,0.2)',
         transition: '0.3s',
         width: '70vw',
-        height: '30%',
+        height: '25%',
         padding: '20px 20px 40px',
         '@media only screen and (max-width: 740px)': {
             flexGrow: 0,

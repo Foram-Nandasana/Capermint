@@ -27,7 +27,7 @@ export const Allroutes = () => {
                     <Route path="/BuyNow/:id" element={<BuyNow/>}/>
                     <Route path="/ProductForm" element={<ProductForm />} />
                     <Route path="/Admin" element= {<Admin/>}/>
-                    <Route path="/AddCart/:id" element={<Protected Component={AddCart} />} />
+                    <Route path="/AddCart" element={<Protected Component={AddCart} />} />
                     <Route path="/Order" element={<Protected Component={Order}/>}/>
                     <Route path="Login" element={<Login />} />
                     <Route path="/Logout" element={<Protected Component={Logout} />} />
